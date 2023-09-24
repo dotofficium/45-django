@@ -27,3 +27,42 @@ def data_rendering(request):
         {"gender": "female", "first_name": "taja", "last_name": "aswani", "age": 25, "tech": [".net", "c#", "powerBI"]}
     ]
     return render(request, template_name="render.html", context={"mydata": data})
+
+
+# ************************** Questions and Choice models ******************
+
+# list                  :
+# detail - individual   : unque key, primary key
+# Add
+# update
+# delete
+
+from .models import Question, Choice
+from django.shortcuts import get_object_or_404
+
+
+def questions_list(request):
+    questions = Question.objects.all()
+    return render(request, template_name="qc/questions.html",
+                  context={"questions": questions})
+
+
+"""
+In [6]: question = Question.objects.get(id=1)
+In [7]: question
+Out[7]: <Question: how are you?>
+In [8]: Choice.objects.filter(question=question)
+Out[8]: <QuerySet [<Choice: how are you?-good>]>
+In [9]: question.choice_set.create(choice_text="fine", votes=100)
+Out[9]: <Choice: how are you?-fine>
+In [10]: Choice.objects.filter(question=question)
+Out[10]: <QuerySet [<Choice: how are you?-good>, <Choice: how are you?-fine>]>
+In [11]: question.choice_set.all()
+Out[11]: <QuerySet [<Choice: how are you?-good>, <Choice: how are you?-fine>]>
+"""
+
+
+def question_detail(request, pk):
+    question = get_object_or_404(Question, pk=pk)
+    return render(request, template_name="qc/detail_question.html",
+                  context={"question": question})

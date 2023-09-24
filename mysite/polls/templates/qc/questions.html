@@ -1,0 +1,10 @@
+<h1> Questions</h1>
+{% if questions %}
+    {% for question in questions %}
+        <li>
+            <a href='{% url "question-detail" question.pk %}'>{{ question.question_text}}</a>
+        </li>
+    {% endfor %}
+{% else %}
+    <h3>Questions not There in the DB</h3>
+{% endif %}

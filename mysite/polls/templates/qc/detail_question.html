@@ -1,0 +1,6 @@
+
+<h3>{{ question.question_text }} - {{ question.question_pub_date }}</h3>
+
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} - Votes ({{  choice.votes }})</li>
+{% endfor %}
