@@ -16,3 +16,13 @@ class Choice(models.Model):
 
     def __str__(self):
         return f"{self.question.question_text}-{self.choice_text}"
+
+
+class Student(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100, null=True, blank=True)
+    email = models.EmailField()
+    dob = models.DateField()
+    mobile = models.CharField(max_length=10)
+    gender = models.CharField(max_length=10)
+    

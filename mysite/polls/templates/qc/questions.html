@@ -2,7 +2,7 @@
 {% if questions %}
     {% for question in questions %}
         <li>
-            <a href='{% url "question-detail" question.pk %}'>{{ question.question_text}}</a>
+            <a href='{% url "polls:question-detail" question.pk %}'>{{ question.question_text}}</a>
         </li>
     {% endfor %}
 {% else %}
