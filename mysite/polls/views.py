@@ -66,3 +66,17 @@ def question_detail(request, pk):
     question = get_object_or_404(Question, pk=pk)
     return render(request, template_name="qc/detail_question.html",
                   context={"question": question})
+
+
+from .models import Student, Interview
+def students_list(request):
+    students = Student.objects.all()
+    return render(request, template_name="si/students.html", context={"students": students})
+
+
+def student_detail(request, pk):
+    student = get_object_or_404(Student, pk=pk)
+    return render(request, template_name="si/detail_student.html",
+                  context={"student": student})
+
+

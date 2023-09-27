@@ -1,0 +1,5 @@
+{{ student.first_name }}  -- {{ student.last_name }}
+
+{% for interview in student.interview_set.all %}
+    <li>{{ interview.name }}</li>
+{% endfor %}

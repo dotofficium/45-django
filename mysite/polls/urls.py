@@ -11,5 +11,9 @@ urlpatterns = [
 
     # Question and choice
     path("question/list/", views.questions_list, name="question-list"),
-    path("question/detail/<int:pk>/", views.question_detail, name="question-detail")
+    path("question/detail/<int:pk>/", views.question_detail, name="question-detail"),
+
+    path("students/list/", views.students_list, name="student-list"),
+    path("students/detail/<int:pk>/", views.student_detail, name="students-detail"),
+
 ]
