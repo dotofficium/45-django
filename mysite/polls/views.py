@@ -80,3 +80,33 @@ def student_detail(request, pk):
                   context={"student": student})
 
 
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+def create_student(request):
+    if request.method == "POST":
+        # ipdb> request.method
+        # 'POST'
+        # ipdb> request.POST
+        # <QueryDict: {'csrfmiddlewaretoken': ['x7wnDLuBGJwgbqDFgxwm1sHv5SPIfmNK0ae0rsl1UsLtJygt4wDgfI7vqATe1eh6'],
+        # 'first_name': ['Mahesh'], 'last_name': ['Kumar'],
+        # 'email': ['mahesh@gmail.com'], 'dob': ['1998-03-38'],
+        # 'mobile': ['1234567890'], 'gender': ['male']}>
+        # ipdb> request.POST["mobile"]
+        # '1234567890'
+        # import ipdb;ipdb.set_trace()
+        student = Student.objects.create(
+            first_name=request.POST["first_name"],
+            last_name=request.POST["last_name"],
+            email=request.POST["email"],
+            dob=request.POST["my-dob"],
+            mobile=request.POST["mobile"],
+            gender=request.POST["gender"]
+        )
+        return HttpResponseRedirect(reverse("polls:student-list", args=[]))
+    else:
+        return render(
+            request,
+            template_name="si/create_student.html",
+            context={})
+
+

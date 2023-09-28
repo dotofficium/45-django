@@ -1,3 +1,5 @@
 {% for student in students %}
-    <li>{{ student.first_name }}</li>
+<li>
+    <a href="{% url 'polls:students-detail' student.pk %}">{{ student.first_name }}</a>
+</li>
 {% endfor %}

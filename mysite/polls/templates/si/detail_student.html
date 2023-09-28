@@ -1,5 +1,10 @@
 {{ student.first_name }}  -- {{ student.last_name }}
 
 {% for interview in student.interview_set.all %}
-    <li>{{ interview.name }}</li>
+    <li>{{ interview.name }}:
+        {{ interview.mode }}
+        {{ interview.sub_mode }} -
+        {{ interview.result }}(
+        {{ interview.marks }} / {{ interview.max_marks }})
+    </li>
 {% endfor %}
